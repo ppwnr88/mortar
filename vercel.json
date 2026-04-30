@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/backoffice",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/backoffice/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
