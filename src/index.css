@@ -24,3 +24,14 @@ body {
 #root {
   width: 100%;
 }
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}

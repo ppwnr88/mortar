@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Mortar Storefront + Backoffice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+โปรเจกต์นี้ถูกปรับจาก Vite landing page เดิมให้เป็น full-stack app ใน repo เดียว ประกอบด้วย:
 
-Currently, two official plugins are available:
+- `src/` React storefront + backoffice
+- `server/` Express API, PostgreSQL access, PASETO auth, Google login endpoint
+- `server/db/schema.sql` SQL schema สำหรับสร้างตารางทั้งหมด
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- หน้า storefront ดึงข้อมูลจาก API จริง
+- หน้า backoffice สำหรับจัดการข้อมูลทั้งหมดที่แสดงบน storefront
+- Login ด้วย `username/password` โดยใช้ PASETO
+- Google Login แบบ env-driven (`GOOGLE_CLIENT_ID`, `VITE_GOOGLE_CLIENT_ID`)
+- PostgreSQL config จาก env
+- seed ข้อมูลเริ่มต้นจาก content เดิมใน `src/App.tsx`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Environment
 
-## Expanding the ESLint configuration
+ไฟล์ตัวอย่างอยู่ที่ `.env.example`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+ค่าที่ใช้งานในเครื่องนี้ถูกใส่ไว้ใน `.env` แล้ว และ `.env` ถูก ignore ไว้ไม่ให้ commit โดยอัตโนมัติ
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+ตัวแปรหลัก:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `DB_HOST`
+- `DB_PORT`
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_SSL`
+- `PASETO_SECRET`
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `ADMIN_DISPLAY_NAME`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_ALLOWED_EMAILS`
+- `VITE_API_URL`
+- `VITE_GOOGLE_CLIENT_ID`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Scripts
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `npm run dev` รัน frontend + backend พร้อมกัน
+- `npm run dev:client` รัน Vite frontend
+- `npm run dev:server` รัน Express API แบบ watch mode
+- `npm run db:setup` สร้าง schema และ seed ข้อมูล
+- `npm run typecheck` ตรวจ TypeScript ทั้ง frontend/backend
+- `npm test` รัน Vitest
+- `npm run build` build production frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Notes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- backoffice route คือ `/backoffice`
+- login route คือ `/backoffice/login`
+- API health check คือ `/api/health`
+- schema จะถูก initialize อัตโนมัติเมื่อ backend start
+- ใน environment นี้การเชื่อมต่อฐานข้อมูลที่ host ตาม env เกิด `ETIMEDOUT` ระหว่างรัน `npm run db:setup` จึงมี schema/seed script เตรียมไว้ครบ แต่ยังต้องรันจาก network ที่เข้าถึง Supabase instance ได้
