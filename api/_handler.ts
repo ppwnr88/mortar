@@ -4,7 +4,7 @@ import { createApp } from '../server/app.js'
 
 let appPromise: Promise<Express> | undefined
 
-export default async function handler(request: IncomingMessage, response: ServerResponse) {
+export async function handleApi(request: IncomingMessage, response: ServerResponse) {
   appPromise ??= createApp()
   const app = await appPromise
 
