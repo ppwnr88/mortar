@@ -1,10 +1,10 @@
 import { createHash } from 'node:crypto'
 import argon2 from 'argon2'
 import { V3 } from 'paseto'
-import { env } from '../config/env'
-import { toSafeAdminUser, UserRepository } from '../repositories/userRepository'
-import type { AuthSession, AuthTokenPayload, SafeAdminUser } from '../types'
-import type { GoogleAuthService } from './googleAuthService'
+import { env } from '../config/env.js'
+import { toSafeAdminUser, UserRepository } from '../repositories/userRepository.js'
+import type { AuthSession, AuthTokenPayload, SafeAdminUser } from '../types.js'
+import type { GoogleAuthService } from './googleAuthService.js'
 
 export class AuthService {
   private readonly tokenKey = createHash('sha256').update(env.PASETO_SECRET).digest()

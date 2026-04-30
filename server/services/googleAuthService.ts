@@ -1,6 +1,6 @@
 import { OAuth2Client } from 'google-auth-library'
-import { allowedGoogleEmails, env } from '../config/env'
-import type { GoogleProfile } from '../types'
+import { allowedGoogleEmails, env } from '../config/env.js'
+import type { GoogleProfile } from '../types.js'
 
 export class GoogleAuthService {
   private readonly client = env.GOOGLE_CLIENT_ID ? new OAuth2Client(env.GOOGLE_CLIENT_ID) : null

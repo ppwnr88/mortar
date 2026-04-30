@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from 'express'
-import type { SafeAdminUser } from '../types'
+import type { SafeAdminUser } from '../types.js'
 
 export type AuthenticatedRequest = Request & {
   user?: SafeAdminUser

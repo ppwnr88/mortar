@@ -1,13 +1,13 @@
 import express from 'express'
 import request from 'supertest'
 import { describe, expect, it, vi } from 'vitest'
-import { errorHandler } from '../middleware/errorHandler'
-import { createAuthRoutes } from '../routes/authRoutes'
-import { createContentRoutes } from '../routes/contentRoutes'
-import type { AuthService } from '../services/authService'
-import type { ContentService } from '../services/contentService'
-import type { GoogleAuthService } from '../services/googleAuthService'
-import { defaultContent } from '../db/defaultContent'
+import { errorHandler } from '../middleware/errorHandler.js'
+import { createAuthRoutes } from '../routes/authRoutes.js'
+import { createContentRoutes } from '../routes/contentRoutes.js'
+import type { AuthService } from '../services/authService.js'
+import type { ContentService } from '../services/contentService.js'
+import type { GoogleAuthService } from '../services/googleAuthService.js'
+import { defaultContent } from '../db/defaultContent.js'
 
 const createTestApp = () => {
   const adminUser = { id: 1, username: 'admin', displayName: 'Admin', role: 'admin' as const, googleEmail: null }

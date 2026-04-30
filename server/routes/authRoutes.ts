@@ -1,9 +1,9 @@
 import { Router } from 'express'
 import { z } from 'zod'
-import type { AuthService } from '../services/authService'
-import type { GoogleAuthService } from '../services/googleAuthService'
-import { requireAuth } from '../middleware/requireAuth'
-import type { AuthenticatedRequest, AuthVerifier } from '../middleware/requireAuth'
+import type { AuthService } from '../services/authService.js'
+import type { GoogleAuthService } from '../services/googleAuthService.js'
+import { requireAuth } from '../middleware/requireAuth.js'
+import type { AuthenticatedRequest, AuthVerifier } from '../middleware/requireAuth.js'
 
 const loginSchema = z.object({
   username: z.string().min(1),

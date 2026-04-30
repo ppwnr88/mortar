@@ -1,5 +1,5 @@
 import type { Pool, PoolClient } from 'pg'
-import type { AdminUser, SafeAdminUser } from '../types'
+import type { AdminUser, SafeAdminUser } from '../types.js'
 
 type Queryable = Pool | PoolClient
 

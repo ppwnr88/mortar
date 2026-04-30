@@ -1,4 +1,4 @@
-import type { PublicContent, SiteContent } from '../types'
+import type { PublicContent, SiteContent } from '../types.js'
 
 export const defaultSiteContent: SiteContent = {
   brandName: 'ครกหินไทย',

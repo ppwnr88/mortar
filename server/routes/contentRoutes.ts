@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { z } from 'zod'
-import { requireAuth } from '../middleware/requireAuth'
-import type { AuthService } from '../services/authService'
-import type { ContentService } from '../services/contentService'
+import { requireAuth } from '../middleware/requireAuth.js'
+import type { AuthService } from '../services/authService.js'
+import type { ContentService } from '../services/contentService.js'
 
 const publicContentSchema = z.object({
   siteContent: z.object({

@@ -1,5 +1,5 @@
-import { initializeDatabase } from '../db/init'
-import { pool } from '../db/pool'
+import { initializeDatabase } from '../db/init.js'
+import { pool } from '../db/pool.js'
 
 initializeDatabase()
   .then(async () => {

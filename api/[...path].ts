@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Express } from 'express'
-import { createApp } from '../server/app'
+import { createApp } from '../server/app.js'
 
 let appPromise: Promise<Express> | undefined
 

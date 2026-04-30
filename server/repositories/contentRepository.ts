@@ -1,5 +1,5 @@
 import type { Pool, PoolClient } from 'pg'
-import type { Feature, Language, Product, PublicContent, SiteContent, SiteStat, SocialLink, Testimonial } from '../types'
+import type { Feature, Language, Product, PublicContent, SiteContent, SiteStat, SocialLink, Testimonial } from '../types.js'
 
 type Queryable = Pool | PoolClient
 

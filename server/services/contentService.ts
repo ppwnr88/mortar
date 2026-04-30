@@ -1,7 +1,7 @@
 import type { Pool } from 'pg'
 import { z } from 'zod'
-import { ContentRepository } from '../repositories/contentRepository'
-import type { Language, PublicContent } from '../types'
+import { ContentRepository } from '../repositories/contentRepository.js'
+import type { Language, PublicContent } from '../types.js'
 
 const imagePathSchema = z.string().refine((value) => {
   if (value.startsWith('/')) {

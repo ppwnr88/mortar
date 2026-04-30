@@ -1,11 +1,11 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import argon2 from 'argon2'
-import { env } from '../config/env'
-import { defaultContent } from './defaultContent'
-import { pool } from './pool'
-import { ContentRepository } from '../repositories/contentRepository'
-import { UserRepository } from '../repositories/userRepository'
+import { env } from '../config/env.js'
+import { defaultContent } from './defaultContent.js'
+import { pool } from './pool.js'
+import { ContentRepository } from '../repositories/contentRepository.js'
+import { UserRepository } from '../repositories/userRepository.js'
 
 let initialized = false
 
